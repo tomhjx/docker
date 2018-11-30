@@ -59,7 +59,6 @@ RUN set -x; \
 RUN echo "Install composer..."; \
     curl -sS https://getcomposer.org/installer | /usr/local/php/bin/php;mv composer.phar /usr/local/bin/composer
 
-COPY etc/php-fpm.conf /usr/local/php/etc/php-fpm.conf
 COPY start.sh /start.sh
 RUN echo "Clean ..."; \
     rm -rf /usr/local/php/etc; \
@@ -67,5 +66,7 @@ RUN echo "Clean ..."; \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime; \
     mkdir -p /data1/log/php/; \
     chmod +x /start.sh;
+COPY etc/php-fpm.conf /usr/local/php/etc/php-fpm.conf
+COPY etc/php.ini /usr/local/php/lib/php.ini
 
 CMD ["/start.sh"]
