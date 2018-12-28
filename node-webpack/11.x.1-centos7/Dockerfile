@@ -19,10 +19,16 @@ RUN yum install -y git \
 RUN curl -sL https://rpm.nodesource.com/setup_11.x | bash - \
     && yum install -y nodejs
 
-COPY vendor /app/vendor
+COPY app /app
 
-RUN cd /app/vendor/; \
+RUN cd /app; \
     npm install; \
     npm audit fix
 
-CMD ["npm", "-v"]
+COPY entrypoint.sh /entrypoint.sh
+
+RUN mkdir /app/dist
+
+WORKDIR /app
+VOLUME ["/webpack/src", "/app/dist"]
+ENTRYPOINT ["/entrypoint.sh"]
