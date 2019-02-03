@@ -1,0 +1,6 @@
+version: '3'
+services:
+  test.pm2:
+      build: ./
+      container_name: test_pm2
+      restart: always
