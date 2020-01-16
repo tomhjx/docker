@@ -1,0 +1,19 @@
+version: '3.5'
+services:
+  go:
+      build: ./
+      restart: always
+      privileged: true
+      container_name: go
+      command: ["sh", "-c", "tail -f /dev/null"]
+      environment:
+        GO111MODULE: "on"
+        GOPROXY: "https://goproxy.io"
+        CGO_ENABLED: 0
+      volumes:
+        - ./src:/work/src
+      cap_add:
+        - ALL
+networks:
+  default:
+    name: lab
