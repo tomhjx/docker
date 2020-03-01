@@ -37,9 +37,9 @@ RUN go get -u -v github.com/ramya-rao-a/go-outline; \
 
 # gocode-gomod
 RUN cd $GOPATH/bin; \
-	ls -alh; \
     cp gocode gocode-gomod; \
-    cp godef godef-gomod
+    cp godef godef-gomod; \
+	cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime;
 
 RUN go version
 WORKDIR /work

@@ -1,0 +1,16 @@
+version: '3.5'
+services:
+  hexo-4.2.0.13-centos7:
+      build: ./
+      command: ["hexo", "server", "--debug"]
+      restart: always
+      ports:
+        - "4000:4000"
+      volumes:
+        - /Users/tom/Repos/github.com/tomhjx/blog.source/uploads:/var/www/blog/themes/next/source/uploads
+        - /Users/tom/Repos/github.com/tomhjx/blog.source/themes/next/_config.yml:/var/www/blog/themes/next/_config.yml
+        - /Users/tom/Repos/github.com/tomhjx/blog.source/_config.yml:/var/www/blog/_config.yml
+        - /Users/tom/Repos/github.com/tomhjx/blog.source/scaffolds:/var/www/blog/scaffolds
+        - /Users/tom/Repos/github.com/tomhjx/blog.source/source:/var/www/blog/source
+        - /Users/tom/.ssh/id_rsa:/root/.ssh/id_rsa
+        - /Users/tom/.gitconfig:/root/.gitconfig
