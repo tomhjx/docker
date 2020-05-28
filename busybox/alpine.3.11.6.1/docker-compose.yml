@@ -1,0 +1,5 @@
+version: '3.5'
+services:
+  busybox_alpine_3_11_6_1:
+      build: ./
+      command: ["sh", "-c", "curl -I 'http://baidu.com'"]
