@@ -1,0 +1,10 @@
+version: '3.5'
+services:
+  fpm:
+    build: ./
+    restart: always
+    cap_add:
+      - ALL
+    environment:
+      COMPOSER_PROCESS_TIMEOUT: 3000
+      COMPOSER_MEMORY_LIMIT: -1

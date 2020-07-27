@@ -1,0 +1,5 @@
+version: '3.5'
+services:
+  or1_13_6_2-forward-centos7:
+      build: ./
+      restart: always
