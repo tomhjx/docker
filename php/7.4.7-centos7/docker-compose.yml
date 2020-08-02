@@ -1,0 +1,4 @@
+version: '3'
+services:
+  php_7_4_7-centos7:
+      build: ./
