@@ -59,8 +59,15 @@ RUN set -x; \
 RUN echo "Install composer..."; \
     curl -sS https://getcomposer.org/installer | /usr/local/php/bin/php;mv composer.phar /usr/local/bin/composer
 
-RUN /usr/local/php/bin/pecl install redis;
+RUN wget http://phar.phpunit.cn/phpunit-6.5.phar; \
+    chmod +x phpunit-6.5.phar; \
+    mv phpunit-6.5.phar /usr/local/bin/phpunit; \
+    phpunit --version
 
+RUN pecl install redis; \
+    pecl install yaconf; \
+    pecl install xdebug;
+    
 COPY start.sh /start.sh
 RUN echo "Clean ..."; \
     rm -rf /usr/local/php/etc; \
